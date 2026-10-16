@@ -1393,23 +1393,89 @@ textarea {
 }
 
 .direct {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  margin-top: 14px;
-  font-size: 15px;
+  margin-top: 28px;
+  max-width: 30rem;
+  border-top: 1px solid rgba(216, 188, 126, 0.35);
+}
+
+.direct li {
+  border-bottom: 1px solid rgba(216, 188, 126, 0.35);
 }
 
 .direct a {
-  color: var(--gold);
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 16px;
+  padding: 14px 0;
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.3;
 }
 
-.direct svg {
+.direct-icon {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.direct-icon.is-call {
+  background: var(--phone);
+  border-color: var(--phone);
+  color: var(--white);
+}
+
+.direct-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.direct-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.direct-text small {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.direct-arrow {
+  flex: none;
+  color: var(--gold);
+  opacity: 0.6;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.direct-arrow svg {
   width: 16px;
   height: 16px;
+}
+
+.direct a:hover .direct-arrow,
+.direct a:focus-visible .direct-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.direct a:hover .direct-icon:not(.is-call) {
+  background: var(--gold);
+  color: var(--green);
+}
+
+.direct a:hover .direct-text {
+  color: var(--gold);
 }
 
 /* FAQ */

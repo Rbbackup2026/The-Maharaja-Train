@@ -39,13 +39,50 @@ export function Enquire() {
             Tell us the journey, the month, and how many of you are travelling. We check what is actually free and
             reply with the fare. The reduction applies only to selected departures.
           </p>
-          <div className="direct">
-            <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
-            <a href={`mailto:${email}`}>{email}</a>
-            <a href={whatsapp} target="_blank" rel="noopener noreferrer">
-              <Icon name="whatsapp" /> WhatsApp
-            </a>
-          </div>
+          <ul className="direct">
+            <li>
+              <a href={`tel:${phoneTel}`}>
+                <span className="direct-icon is-call">
+                  <Icon name="phone" />
+                </span>
+                <span className="direct-text">
+                  <small>Call the desk</small>
+                  {phoneDisplay}
+                </span>
+                <span className="direct-arrow">
+                  <Icon name="arrow" />
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href={whatsapp} target="_blank" rel="noopener noreferrer">
+                <span className="direct-icon">
+                  <Icon name="whatsapp" />
+                </span>
+                <span className="direct-text">
+                  <small>WhatsApp</small>
+                  Chat with a specialist
+                </span>
+                <span className="direct-arrow">
+                  <Icon name="arrow" />
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${email}`}>
+                <span className="direct-icon">
+                  <Icon name="mail" />
+                </span>
+                <span className="direct-text">
+                  <small>Email</small>
+                  {email}
+                </span>
+                <span className="direct-arrow">
+                  <Icon name="arrow" />
+                </span>
+              </a>
+            </li>
+          </ul>
         </div>
 
         <form className="form" id="enquire" onSubmit={onSubmit}>
