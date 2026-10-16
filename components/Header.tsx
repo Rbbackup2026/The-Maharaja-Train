@@ -165,6 +165,36 @@ export function Header() {
                 </li>
               ))}
             </ul>
+            <div className="nav-contact">
+              <p className="nav-contact-title">Speak to a specialist</p>
+              <a href={`tel:${phoneTel}`}>
+                <span className="nav-contact-icon is-call">
+                  <Icon name="phone" />
+                </span>
+                <span>
+                  <small>Call</small>
+                  {phoneDisplay}
+                </span>
+              </a>
+              <a href={whatsapp} target="_blank" rel="noopener noreferrer">
+                <span className="nav-contact-icon">
+                  <Icon name="whatsapp" />
+                </span>
+                <span>
+                  <small>WhatsApp</small>
+                  Chat with us
+                </span>
+              </a>
+              <a href={`mailto:${email}`}>
+                <span className="nav-contact-icon">
+                  <Icon name="mail" />
+                </span>
+                <span>
+                  <small>Email</small>
+                  {email}
+                </span>
+              </a>
+            </div>
           </nav>
         </div>
       </div>

@@ -251,13 +251,15 @@ ol {
 
 .topbar-grid {
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-areas:
-    "lockup cta"
-    "agent agent";
-  gap: 12px 16px;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "cta agent";
+  gap: 12px;
   align-items: center;
-  padding: 14px 0 12px;
+  padding: 12px 0;
+}
+
+.site-header .lockup {
+  display: none;
 }
 
 .lockup {
@@ -309,12 +311,11 @@ ol {
 
 .agent {
   grid-area: agent;
+  justify-self: end;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--line-soft);
+  gap: 10px;
+  min-width: 0;
 }
 
 .seal {
@@ -362,13 +363,14 @@ ol {
 
 .header-cta {
   grid-area: cta;
-  justify-self: end;
+  justify-self: start;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .specialist {
+  display: none;
   text-decoration: none;
   color: var(--green);
 }
@@ -461,8 +463,8 @@ ol {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-height: 38px;
-  padding: 0 14px;
+  min-height: 42px;
+  padding: 0 16px;
   background: var(--gold-ink);
   border: 1px solid var(--gold-ink);
   color: var(--white);
@@ -525,6 +527,9 @@ ol {
 
 .nav-panel.is-open {
   display: block;
+  max-height: calc(100dvh - 120px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .nav-list {
@@ -588,6 +593,64 @@ ol {
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.nav-contact {
+  margin-top: 6px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(216, 188, 126, 0.35);
+  display: grid;
+  gap: 4px;
+}
+
+.nav-contact-title {
+  margin-bottom: 6px;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.nav-contact a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0;
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.nav-contact small {
+  display: block;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav-contact-icon {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+}
+
+.nav-contact-icon.is-call {
+  background: var(--phone);
+  border-color: var(--phone);
+  color: var(--white);
+}
+
+.nav-contact-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
 .dropdown a {
@@ -1541,6 +1604,30 @@ textarea {
     display: none;
   }
 
+  .agent {
+    gap: 8px;
+  }
+
+  .seal {
+    width: 42px;
+    height: 42px;
+  }
+
+  .agent-name {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .agent-pref,
+  .agent-train {
+    font-size: 13px;
+  }
+
+  .btn-enquire {
+    padding: 0 13px;
+    letter-spacing: 0.12em;
+  }
+
   .btn-enquire svg {
     display: none;
   }
@@ -1558,14 +1645,6 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
 
-  .specialist-digits,
-  .cta-icons {
-    display: flex;
-  }
-
-  .header-cta {
-    gap: 18px;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -1584,7 +1663,7 @@ textarea {
 }
 
 @media (min-width: 980px) and (max-width: 1199px) {
-  .cta-icons {
+  .header-cta .cta-icons {
     display: none;
   }
 }
@@ -1633,9 +1712,25 @@ textarea {
   }
 
   .agent {
-    border-top: 0;
-    padding-top: 0;
-    justify-content: flex-start;
+    justify-self: start;
+  }
+
+  .header-cta {
+    justify-self: end;
+    gap: 18px;
+  }
+
+  .specialist {
+    display: block;
+  }
+
+  .specialist-digits,
+  .cta-icons {
+    display: flex;
+  }
+
+  .nav-contact {
+    display: none;
   }
 
   .seal {
@@ -1678,6 +1773,8 @@ textarea {
   .nav-panel.is-open {
     display: block;
     padding: 0;
+    max-height: none;
+    overflow: visible;
   }
 
   .nav-list {
